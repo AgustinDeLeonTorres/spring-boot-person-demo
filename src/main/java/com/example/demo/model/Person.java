@@ -1,27 +1,34 @@
 package com.example.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.lang.NonNull;
-
+import jakarta.persistence.*;
 import java.util.UUID;
 
+@Entity
+@Table(name = "person")
 public class Person {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
-    private final UUID id;
-    private final String name;
+    private String name;
 
-    public Person(@JsonProperty("id")UUID id, @JsonProperty("name") String name) {
+    // Default constructor (REQUIRED by JPA)
+    public Person() {}
+
+    // Constructor with parameters
+    public Person(String name) {
+        this.name = name;
+    }
+
+    // Constructor with all fields
+    public Person(UUID id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public UUID getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-
+    // Getters and setters
+    public UUID getId() { return id; }
+    public void setId(UUID id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 }

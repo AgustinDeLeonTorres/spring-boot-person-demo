@@ -1,11 +1,10 @@
-app:
+spring:
   datasource:
-    jdbc-url: jdbc:postgresql://localhost:5432/demodb
+    url: jdbc:postgresql://localhost:5432/demodb
     username: postgres
     password: password
-    pool-size: 30
-
-spring:
+    hikari:
+      maximum-pool-size: 30
   jpa:
     hibernate:
       ddl-auto: create-drop
@@ -14,6 +13,9 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+  sql:
+    init:
+      mode: always
 
 server:
   port: 8080
