@@ -1,6 +1,24 @@
 app:
   datasource:
-    jdbc-url: jdbc:postgresql://localhost:5432/spring-boot-postgres-db
+    jdbc-url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: password
     pool-size: 30
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    com.example.demo: DEBUG
