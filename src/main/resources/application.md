@@ -5,6 +5,7 @@ spring:
     password: password
     hikari:
       maximum-pool-size: 30
+
   jpa:
     hibernate:
       ddl-auto: create-drop
@@ -13,14 +14,6 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
-  sql:
-    init:
-      mode: always
 
 server:
   port: 8080
-
-logging:
-  level:
-    org.springframework.web: DEBUG
-    com.example.demo: DEBUG
